@@ -1,0 +1,39 @@
+# Algoritmo de punto fijo
+2	# [a,b] intervalo de búsqueda
+3	# error = tolerar
+4	import numpy as np
+5	from matplotlib import pyplot as plt
+6	def puntofijo(gx,a,tolera, iteramax = 15):
+7	    i = 1 # iteración
+8	    b = gx(a)
+9	    tramo = abs(b-a)
+10	    while(tramo>=tolera and i<=iteramax ):
+11	        a = b
+12	        b = gx(a)
+13	        tramo = abs(b-a)
+14	        i = i + 1
+15	    respuesta = b
+16	    
+17	    # Validar respuesta
+18	    if (i>=iteramax ):
+19	        respuesta = np.nan
+20	    return(respuesta)
+21	
+22	# PROGRAMA ---------
+23	
+24	# INGRESO
+25	fx = lambda x: np.exp(-x) - x
+26	gx = lambda x: np.exp(-x)
+27	
+28	a = 0       # intervalo
+29	b = 1
+30	tolera = 0.001
+31	iteramax = 15  # itera máximo
+32	muestras = 51  # gráfico
+33	tramos = 50
+34	
+35	# PROCEDIMIENTO
+36	respuesta ="El prcedimiento no fue exitoso", puntofijo(gx,a,tolera)
+37	
+38	# SALIDA
+39	print(respuesta)
